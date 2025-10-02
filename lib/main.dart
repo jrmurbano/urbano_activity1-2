@@ -49,7 +49,7 @@ class _CarRentalWelcomeState extends State<CarRentalWelcome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CarRent'),
+        title: const Text('CarRents'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: SingleChildScrollView(
