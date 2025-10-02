@@ -94,15 +94,15 @@ class HomePage extends StatelessWidget {
             // Featured car card
             CarCard(
               carIcon: Icons.directions_car,
-              carName: 'Tesla Model 3',
-              carModel: '2024 Electric Sedan',
-              description: 'Premium electric vehicle with autopilot features',
+              carName: 'Mitsubishi Triton',
+              carModel: '2025 Pick-up',
+              description: 'Premium vehicle with excellent off-road features',
               rating: 4.8,
-              pricePerDay: 89.99,
+              pricePerDay: 495.00,
               onBookPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Booking Tesla Model 3...'),
+                    content: Text('Booking Mitsubishi Triton...'),
                     duration: Duration(seconds: 2),
                   ),
                 );
