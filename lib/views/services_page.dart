@@ -12,7 +12,7 @@ class ServicesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Services - CarRent'),
+        title: const Text('Services'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: SingleChildScrollView(
@@ -151,7 +151,7 @@ class ServicesPage extends StatelessWidget {
       },
       {
         'icon': Icons.airport_shuttle,
-        'name': 'Toyota Highlander',
+        'name': 'Toyota Fortuner',
         'model': '2024 SUV',
         'desc': 'Spacious 7-seater family SUV',
         'rating': 4.6,

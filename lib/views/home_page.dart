@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home - CarRent'),
+        title: const Text('Home'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: SingleChildScrollView(
@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Welcome to CarRent!',
+                    'Welcome to Roshans Road Rentals!',
                     style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),

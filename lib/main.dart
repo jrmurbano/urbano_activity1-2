@@ -61,7 +61,7 @@ class _CarRentalWelcomeState extends State<CarRentalWelcome> {
               Icon(Icons.directions_car, size: 100, color: Colors.blueAccent),
               const SizedBox(height: 30),
               const Text(
-                'Welcome to CarRent!',
+                'Welcome to Roshans Road Rentals!',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
