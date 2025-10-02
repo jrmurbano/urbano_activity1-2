@@ -59,8 +59,8 @@ class ProfilePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: ProfileContactCard(
                 name: 'Roshan Urbano',
-                email: 'urbano@gmail.com',
-                phone: '+1 (555) 123-4567',
+                email: 'roshanurbano@gmail.com',
+                phone: '09291530238',
                 avatarIcon: Icons.account_circle,
               ),
             ),
