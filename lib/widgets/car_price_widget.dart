@@ -9,7 +9,7 @@ class CarPriceWidget extends StatelessWidget {
   const CarPriceWidget({
     super.key,
     required this.pricePerDay,
-    this.currency = '\$',
+    this.currency = '₱',
   });
 
   @override
