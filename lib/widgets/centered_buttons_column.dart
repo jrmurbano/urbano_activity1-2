@@ -18,32 +18,55 @@ class CenteredButtonsColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+
     return SizedBox(
       height: 200,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center, // Center vertically
         children: [
-          ElevatedButton(
-            onPressed: onButton1Pressed ?? () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueAccent,
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-            ),
-            child: Text(
-              button1Text,
-              style: const TextStyle(fontSize: 16, color: Colors.white),
+          SizedBox(
+            width: isSmallScreen ? double.infinity : null,
+            child: ElevatedButton(
+              onPressed: onButton1Pressed ?? () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? 20 : 40,
+                  vertical: 12,
+                ),
+              ),
+              child: Text(
+                button1Text,
+                style: TextStyle(
+                  fontSize: isSmallScreen ? 14 : 16,
+                  color: Colors.white,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
           const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: onButton2Pressed ?? () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green,
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-            ),
-            child: Text(
-              button2Text,
-              style: const TextStyle(fontSize: 16, color: Colors.white),
+          SizedBox(
+            width: isSmallScreen ? double.infinity : null,
+            child: ElevatedButton(
+              onPressed: onButton2Pressed ?? () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? 20 : 40,
+                  vertical: 12,
+                ),
+              ),
+              child: Text(
+                button2Text,
+                style: TextStyle(
+                  fontSize: isSmallScreen ? 14 : 16,
+                  color: Colors.white,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
         ],

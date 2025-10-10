@@ -10,21 +10,36 @@ class CarRatingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        ...List.generate(maxRating, (index) {
-          if (index < rating.floor()) {
-            return const Icon(Icons.star, color: Colors.amber, size: 20);
-          } else if (index < rating) {
-            return const Icon(Icons.star_half, color: Colors.amber, size: 20);
-          } else {
-            return const Icon(Icons.star_border, color: Colors.amber, size: 20);
-          }
-        }),
-        const SizedBox(width: 8),
+        Flexible(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(maxRating, (index) {
+              if (index < rating.floor()) {
+                return Icon(Icons.star,
+                    color: Colors.amber, size: isSmallScreen ? 16 : 20);
+              } else if (index < rating) {
+                return Icon(Icons.star_half,
+                    color: Colors.amber, size: isSmallScreen ? 16 : 20);
+              } else {
+                return Icon(Icons.star_border,
+                    color: Colors.amber, size: isSmallScreen ? 16 : 20);
+              }
+            }),
+          ),
+        ),
+        SizedBox(width: isSmallScreen ? 4 : 8),
         Text(
           rating.toStringAsFixed(1),
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: isSmallScreen ? 14 : 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ],
     );

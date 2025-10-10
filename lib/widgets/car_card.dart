@@ -46,19 +46,27 @@ class CarCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Available Now',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.green,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    'Available Now',
+                    style: TextStyle(
+                      fontSize:
+                          MediaQuery.of(context).size.width < 400 ? 10 : 12,
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 if (onFavoritePressed != null)
                   IconButton(
                     icon: const Icon(Icons.favorite_border),
                     color: Colors.red,
+                    iconSize: MediaQuery.of(context).size.width < 400 ? 20 : 24,
                     onPressed: onFavoritePressed,
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width < 400 ? 4 : 8),
+                    constraints: const BoxConstraints(),
                   ),
               ],
             ),
@@ -96,19 +104,47 @@ class CarCard extends StatelessWidget {
             const SizedBox(height: 16),
 
             // Price and Book Button Row
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Price Widget (Refactored Component 4)
-                CarPriceWidget(pricePerDay: pricePerDay),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final isSmallScreen = constraints.maxWidth < 300;
 
-                // Book Button (Refactored Component 5 - from Task 4)
-                CustomRentalButton(
-                  text: 'Book Now',
-                  icon: Icons.event_available,
-                  onPressed: onBookPressed,
-                ),
-              ],
+                if (isSmallScreen) {
+                  // Stack vertically on very small screens
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Price Widget (Refactored Component 4)
+                      Center(child: CarPriceWidget(pricePerDay: pricePerDay)),
+                      const SizedBox(height: 12),
+                      // Book Button (Refactored Component 5 - from Task 4)
+                      CustomRentalButton(
+                        text: 'Book Now',
+                        icon: Icons.event_available,
+                        width: double.infinity,
+                        onPressed: onBookPressed,
+                      ),
+                    ],
+                  );
+                } else {
+                  // Keep horizontal layout for larger screens
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Price Widget (Refactored Component 4)
+                      Flexible(child: CarPriceWidget(pricePerDay: pricePerDay)),
+                      const SizedBox(width: 8),
+                      // Book Button (Refactored Component 5 - from Task 4)
+                      Flexible(
+                        child: CustomRentalButton(
+                          text: 'Book Now',
+                          icon: Icons.event_available,
+                          onPressed: onBookPressed,
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              },
             ),
           ],
         ),

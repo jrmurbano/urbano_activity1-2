@@ -23,6 +23,9 @@ class CustomRentalButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+
     return SizedBox(
       width: width,
       child: ElevatedButton(
@@ -30,7 +33,10 @@ class CustomRentalButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? Colors.blueAccent,
           foregroundColor: textColor ?? Colors.white,
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+          padding: EdgeInsets.symmetric(
+            horizontal: isSmallScreen ? 16 : 32,
+            vertical: isSmallScreen ? 12 : 16,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
@@ -41,12 +47,18 @@ class CustomRentalButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon != null) ...[
-              Icon(icon, size: 24),
-              const SizedBox(width: 12),
+              Icon(icon, size: isSmallScreen ? 20 : 24),
+              SizedBox(width: isSmallScreen ? 8 : 12),
             ],
-            Text(
-              text,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Flexible(
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: isSmallScreen ? 14 : 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

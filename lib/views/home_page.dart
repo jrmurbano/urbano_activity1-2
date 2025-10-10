@@ -63,18 +63,24 @@ class HomePage extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 20),
-                  CustomRentalButton(
-                    text: 'Browse All Cars',
-                    icon: Icons.search,
-                    width: double.infinity,
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Browsing all available cars...'),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    },
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal:
+                          MediaQuery.of(context).size.width < 400 ? 8 : 0,
+                    ),
+                    child: CustomRentalButton(
+                      text: 'Browse All Cars',
+                      icon: Icons.search,
+                      width: double.infinity,
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Browsing all available cars...'),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

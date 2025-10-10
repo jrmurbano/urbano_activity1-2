@@ -14,8 +14,14 @@ class CarPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmallScreen ? 8 : 16,
+        vertical: isSmallScreen ? 6 : 8,
+      ),
       decoration: BoxDecoration(
         color: Colors.blueAccent.withOpacity(0.1),
         borderRadius: BorderRadius.circular(8),
@@ -23,17 +29,23 @@ class CarPriceWidget extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            '$currency${pricePerDay.toStringAsFixed(2)}',
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.blueAccent,
+          Flexible(
+            child: Text(
+              '$currency${pricePerDay.toStringAsFixed(2)}',
+              style: TextStyle(
+                fontSize: isSmallScreen ? 18 : 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blueAccent,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          const Text(
+          Text(
             ' /day',
-            style: TextStyle(fontSize: 14, color: Colors.grey),
+            style: TextStyle(
+              fontSize: isSmallScreen ? 12 : 14,
+              color: Colors.grey,
+            ),
           ),
         ],
       ),

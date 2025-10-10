@@ -55,36 +55,46 @@ class ServicesPage extends StatelessWidget {
             const SizedBox(height: 40),
 
             // Using the custom reusable button on Services page
-            Center(
-              child: CustomRentalButton(
-                text: 'Book a Service',
-                icon: Icons.calendar_today,
-                width: double.infinity,
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Service booking initiated!'),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                },
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width < 400 ? 16 : 0,
+              ),
+              child: Center(
+                child: CustomRentalButton(
+                  text: 'Book a Service',
+                  icon: Icons.calendar_today,
+                  width: double.infinity,
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Service booking initiated!'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             const SizedBox(height: 20),
-            Center(
-              child: CustomRentalButton(
-                text: 'Contact Support',
-                icon: Icons.support_agent,
-                backgroundColor: Colors.green,
-                width: double.infinity,
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Opening support chat...'),
-                      duration: Duration(seconds: 2),
-                    ),
-                  );
-                },
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width < 400 ? 16 : 0,
+              ),
+              child: Center(
+                child: CustomRentalButton(
+                  text: 'Contact Support',
+                  icon: Icons.support_agent,
+                  backgroundColor: Colors.green,
+                  width: double.infinity,
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Opening support chat...'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
 
@@ -225,36 +235,67 @@ class ServicesPage extends StatelessWidget {
     required String title,
     required String description,
   }) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 400;
+
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Row(
-          children: [
-            Icon(icon, size: 50, color: Colors.blueAccent),
-            const SizedBox(width: 20),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        padding: EdgeInsets.all(isSmallScreen ? 16.0 : 20.0),
+        child: isSmallScreen
+            ? Column(
                 children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Icon(icon, size: 40, color: Colors.blueAccent),
+                  const SizedBox(height: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        description,
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.grey),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    description,
-                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                ],
+              )
+            : Row(
+                children: [
+                  Icon(icon, size: 50, color: Colors.blueAccent),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          description,
+                          style:
+                              const TextStyle(fontSize: 14, color: Colors.grey),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
