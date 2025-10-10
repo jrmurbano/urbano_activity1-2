@@ -6,10 +6,34 @@ A comprehensive Flutter car rental app demonstrating core Flutter concepts and a
 
 ```
 lib/
-├── models/          # Data models
-├── views/           # Pages (Home, Services, Profile, Chat Support)
-├── widgets/         # Reusable components
-└── services/        # Business logic
+├── main.dart
+├── models/
+│   ├── placeholder
+├── services/
+│   └── placeholder
+├── views/
+│   ├── chat_support_page.dart
+│   ├── home_page.dart
+│   ├── main_navigation.dart
+│   ├── profile_page.dart
+│   ├── services_page.dart
+├── widgets/
+│   ├── car_card.dart
+│   ├── car_image_widget.dart
+│   ├── car_info_widget.dart
+│   ├── car_price_widget.dart
+│   ├── car_rating_widget.dart
+│   ├── centered_buttons_column.dart
+│   ├── chat_bubble.dart
+│   ├── custom_rental_button.dart
+│   ├── flexible_content_row.dart
+│   ├── hero_stack_banner.dart
+│   ├── icon_action_bar.dart
+│   ├── preferences_grid.dart
+│   ├── profile_contact_card.dart
+│   ├── stats_expanded_row.dart
+│   ├── styled_info_box.dart
+│   ├── three_text_row.dart
 ```
 
 ## First Activity - Core Flutter Concepts
